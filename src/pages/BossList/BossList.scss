@@ -1,0 +1,22 @@
+@import '../../styles/variables';
+
+.content {
+  padding: 0px 30px;
+}
+
+.bossList {
+  &__section {
+    .title {
+      padding: 11px 22px;
+      border-radius: 13px;
+      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+      background-color: $bossList-section-title-easy-clr;
+      margin-bottom: 20px;
+    }
+
+    .bosses {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -4,9 +4,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   .container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0px 20px;
+  }
+
+  &__nav-items {
+    display: flex;
+
+    &--item {
+      margin-right: 40px;
+      color: $header-clr;
+      font-weight: 300;
+      font-size: 16px;
+      cursor: pointer;
+
+      &.hashtag {
+        opacity: 0.2;
+        letter-spacing: 1px;
+        pointer-events: none;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
   }
 
   &__logo-block {
@@ -14,7 +43,12 @@
 }
 
 .logo {
-  color: #939393;
+  color: $header-clr;
   font-size: 20px;
   font-weight: 300;
+
+  line-height: 17px;
+  background-image: linear-gradient(45deg, #e50000, #ff8d00, #ffee00, #008121, #004cff, #760188);
+  color: transparent;
+  -webkit-background-clip: text;
 }
