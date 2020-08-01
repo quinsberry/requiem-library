@@ -11,6 +11,7 @@ import './BossList.scss'
 const bossesData = [
   {
     title: 'Easy',
+    color: '#96ff9c',
     items: [
       {
         _id: '1',
@@ -79,6 +80,25 @@ const bossesData = [
       },
     ],
   },
+  {
+    title: 'Medium',
+    color: '#fff577',
+    items: [
+      {
+        _id: '110',
+        name: 'Фейковый император',
+        experience: '7.500',
+        additionalInfo: 'По квесту Тёмного Братства «Смерть Империи»',
+        location: 'Солитьюд - Мрачный замок',
+        links: {
+          additionalInfo:
+            'https://elderscrolls.fandom.com/ru/wiki/%D0%A1%D0%BC%D0%B5%D1%80%D1%82%D1%8C_%D0%98%D0%BC%D0%BF%D0%B5%D1%80%D0%B8%D0%B8',
+          location:
+            'https://elderscrolls.fandom.com/ru/wiki/%D0%9C%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BC%D0%BE%D0%BA',
+        },
+      },
+    ],
+  },
 ]
 
 const BossList = () => {
@@ -96,7 +116,9 @@ const BossList = () => {
       <div className="bossList">
         {bossesData?.map((el, idx) => (
           <div key={`${el.title}-${idx}`} className="bossList__section">
-            <div className="title">{el.title}</div>
+            <div className="title" style={{ backgroundColor: el.color }}>
+              {el.title}
+            </div>
             <div className="bosses">
               {el.items?.map((boss) => (
                 <BossCard

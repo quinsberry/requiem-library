@@ -52,7 +52,7 @@ const Sidebar = () => {
         <Input placeholder="Поиск (в разработке)" />
       </div>
       <div className="categories">
-        <Block>
+        <Block sidebar>
           <ul className="categories-list">
             {categoriesList?.map((item, idx) => (
               <li
