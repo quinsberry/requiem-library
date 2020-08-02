@@ -14,3 +14,23 @@ export type TBaseThunk<A extends Action = Action, R = Promise<void>> = ThunkActi
   unknown,
   A
 >
+
+// Bosses -----------------
+export type TBossesCategory = {
+  category: string
+  title: string
+  items: Array<TBoss>
+} | null
+
+export type TBoss = {
+  _id: string
+  name: string
+  experience: string
+  additionalInfo: string
+  location: string
+  links?: {
+    name?: string
+    additionalInfo?: string
+    location?: string
+  }
+}

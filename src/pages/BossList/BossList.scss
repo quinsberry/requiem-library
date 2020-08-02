@@ -5,17 +5,49 @@
 }
 
 .bossList {
-  &__section {
-    .title {
-      padding: 11px 22px;
+  &__selector {
+    display: flex;
+    margin-bottom: 20px;
+    &--select {
+      padding: 14px 11px;
+      margin-right: 6px;
       border-radius: 7px;
       box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
+      cursor: pointer;
+      // color: $unactive-categories-item-clr;
+      color: white;
+
+      &.active {
+      }
+    }
+  }
+
+  &__bosses {
+    max-height: calc(100vh - 162px);
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+
+      &-thumb {
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: $scroll-clr;
+      }
+
+      &-track {
+        border-radius: 4px;
+        // background-color: $scroll-bg;
+        background-color: transparent;
+      }
     }
 
-    .bosses {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    /* styles for Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: $scroll-clr $scroll-bg;
+    /* --- */
   }
 }
