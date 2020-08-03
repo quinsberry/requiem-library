@@ -49,10 +49,12 @@ type TMapState = {
   activeCategory: string
 }
 
+type TBossesCategoryInBossList = TBossesCategory | null
+
 const BossList = () => {
   const dispatch = useDispatch()
 
-  const [bosses, setBosses] = React.useState<TBossesCategory>(null)
+  const [bosses, setBosses] = React.useState<TBossesCategoryInBossList>(null)
   const { activeCategory } = useSelector<TAppState, TMapState>((state) => ({
     activeCategory: state.content.bosses.activeCategory,
   }))
@@ -78,8 +80,9 @@ const BossList = () => {
       </Helmet>
       <div className="bossList">
         <div className="bossList__selector">
-          {bossesSelectorCategories?.map((item) => (
+          {bossesSelectorCategories?.map((item, idx) => (
             <div
+              key={`${item.name}-${idx}`}
               className={cn('bossList__selector--select', {
                 active: item.name === activeCategory,
               })}
@@ -93,15 +96,8 @@ const BossList = () => {
           ))}
         </div>
         <div className="bossList__bosses">
-          {bosses?.items?.map((el) => (
-            <BossCard
-              key={el._id}
-              name={el.name}
-              experience={el.experience}
-              additionalInfo={el.additionalInfo}
-              location={el.location}
-              links={el?.links}
-            />
+          {bosses?.items?.map((el, idx) => (
+            <BossCard key={el._id} idx={idx} bossInfo={el} bossesList={bosses.items} />
           ))}
         </div>
       </div>

@@ -1,22 +1,19 @@
 import React from 'react'
 
 import questionCircleSvg from '../../assets/question-circle.svg'
-import locationSvg from '../../assets/location-icon-svg.svg'
 import './BossCard.scss'
 
+import { TBoss } from '../../types/types'
+
 type Props = {
-  name: string
-  experience: string
-  additionalInfo: String
-  location: string
-  links?: {
-    name?: string
-    additionalInfo?: string
-    location?: string
-  }
+  idx: number
+  bossInfo: TBoss
+  bossesList: Array<TBoss>
 }
 
-const BossCard: React.FC<Props> = ({ name, experience, additionalInfo, location, links }) => {
+const BossCard: React.FC<Props> = ({ idx, bossInfo, bossesList }) => {
+  const { name, experience, additionalInfo, location, links } = bossInfo
+
   return (
     <div className="bossCard">
       <img src={questionCircleSvg} alt="Info icon" className="bossCard-info"></img>

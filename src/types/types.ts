@@ -20,7 +20,7 @@ export type TBossesCategory = {
   category: string
   title: string
   items: Array<TBoss>
-} | null
+}
 
 export type TBoss = {
   _id: string
