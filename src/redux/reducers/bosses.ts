@@ -3,7 +3,7 @@ import { TInferActions, TBaseThunk } from '../../types/types'
 type TInitialState = typeof initialState
 
 const initialState = {
-  activeCategory: 'superBosses',
+  activeCategory: 'easy',
   isLoading: false,
 }
 
