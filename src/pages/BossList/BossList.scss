@@ -7,17 +7,20 @@
 .bossList {
   &__selector {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    padding-left: 4px;
     &--select {
-      padding: 14px 11px;
-      margin-right: 6px;
+      padding: 9px;
+      margin-right: 5px;
       border-radius: 7px;
-      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
       cursor: pointer;
-      // color: $unactive-categories-item-clr;
-      color: white;
 
       &.active {
+        color: white;
+      }
+
+      &:active {
+        transform: translate(0px, 1px);
       }
     }
   }

@@ -15,14 +15,34 @@ import './BossList.scss'
 import { TAppState, TBossesCategory } from '../../types/types'
 
 const bossesSelectorCategories = [
-  { title: 'Легкие', name: 'easy', color1: '#DCFED7', color2: '#36FF6E' },
-  { title: 'Средние', name: 'medium', color1: '#36FF6E', color2: '#FBFF25' },
-  { title: 'Тяжелые', name: 'hard', color1: '#FBFF25', color2: '#FFCD83' },
-  { title: 'Особо опасные мальчишки', name: 'dangerBoys', color1: '#FFCD83', color2: '#FFBB54' },
-  { title: 'Боссы гильдий', name: 'guildBosses', color1: '#FFBB54', color2: '#FFAD32' },
-  { title: 'Жрецы', name: 'priests', color1: '#FFAD32', color2: '#FF7A00' },
-  { title: 'Именные драконы', name: 'dragons', color1: '#FF7A00', color2: '#FF0000' },
-  { title: 'Супер боссы', name: 'superBosses', color1: '#FF0000', color2: '#FF0000' },
+  { title: 'Легкие', name: 'easy', color: '#BFE88B', shadowColor: 'rgba(191, 232, 139, 0.5)' },
+  { title: 'Средние', name: 'medium', color: '#E9F98A', shadowColor: 'rgba(233, 249, 138, 0.8)' },
+  { title: 'Тяжелые', name: 'hard', color: '#F9D65D', shadowColor: 'rgba(249, 214, 93, 0.6)' },
+  {
+    title: 'Особо опасные мальчишки',
+    name: 'dangerBoys',
+    color: '#FFB13C',
+    shadowColor: 'rgba(255, 177, 59, 0.5)',
+  },
+  {
+    title: 'Боссы гильдий',
+    name: 'guildBosses',
+    color: '#FF993B',
+    shadowColor: 'rgba(255, 153, 59, 0.4)',
+  },
+  { title: 'Жрецы', name: 'priests', color: '#FF6712', shadowColor: 'rgba(255, 103, 18, 0.3)' },
+  {
+    title: 'Именные драконы',
+    name: 'dragons',
+    color: '#FF452C',
+    shadowColor: 'rgba(255, 69, 44, 0.3)',
+  },
+  {
+    title: 'Супер боссы',
+    name: 'superBosses',
+    color: '#E11111',
+    shadowColor: 'rgba(225, 17, 17, 0.3)',
+  },
 ]
 
 type TMapState = {
@@ -64,8 +84,8 @@ const BossList = () => {
                 active: item.name === activeCategory,
               })}
               style={{
-                background: `linear-gradient(0.25turn, ${item.color1}, ${item.color2})`,
-                boxShadow: item.name === activeCategory ? `1px 2px 4px rgba(0,0,0, .5)` : 'none',
+                backgroundColor: `${item.color}`,
+                boxShadow: `1px 2px 4px ${item.shadowColor}`,
               }}
               onClick={() => handleSelectClick(item.name)}>
               {item.title}
