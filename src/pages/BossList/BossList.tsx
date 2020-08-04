@@ -4,20 +4,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import cn from 'classnames'
 
 import { actions as sidebarActions } from '../../redux/reducers/sidebar'
-import { actions as bossesActions } from '../../redux/reducers/bosses'
-
-import { bossesData } from '../../data'
+import { actions as bossesActions, getBosses } from '../../redux/reducers/bosses'
 
 import { BossCard } from '../../components'
 
 import './BossList.scss'
 
-import { TAppState, TBossesCategory } from '../../types/types'
+import { TAppState, TBossesAvailableTypes, TBoss } from '../../types/types'
+
+import test from '../../data/bosses'
 
 const bossesSelectorCategories = [
   { title: 'Легкие', name: 'easy', color: '#BFE88B', shadowColor: 'rgba(191, 232, 139, 0.5)' },
   { title: 'Средние', name: 'medium', color: '#E9F98A', shadowColor: 'rgba(233, 249, 138, 0.8)' },
-  { title: 'Тяжелые', name: 'hard', color: '#F9D65D', shadowColor: 'rgba(249, 214, 93, 0.6)' },
+  { title: 'Сильные', name: 'strong', color: '#F9D65D', shadowColor: 'rgba(249, 214, 93, 0.6)' },
   {
     title: 'Особо опасные мальчишки',
     name: 'dangerBoys',
@@ -43,34 +43,39 @@ const bossesSelectorCategories = [
     color: '#E11111',
     shadowColor: 'rgba(225, 17, 17, 0.3)',
   },
-]
+] as Array<Selector>
 
-type TMapState = {
-  activeCategory: string
+type Selector = {
+  title: string
+  name: TBossesAvailableTypes
+  color: string
+  shadowColor: string
 }
 
-type TBossesCategoryInBossList = TBossesCategory | null
+type TMapState = {
+  activeCategory: TBossesAvailableTypes
+  bossesList: Array<TBoss>
+}
 
 const BossList = () => {
   const dispatch = useDispatch()
-
-  const [bosses, setBosses] = React.useState<TBossesCategoryInBossList>(null)
-  const { activeCategory } = useSelector<TAppState, TMapState>((state) => ({
+  const { activeCategory, bossesList } = useSelector<TAppState, TMapState>((state) => ({
     activeCategory: state.content.bosses.activeCategory,
+    bossesList: state.content.bosses.bossesList,
   }))
 
   React.useEffect(() => {
     dispatch(sidebarActions.setActiveCategory('BossList'))
+    console.log(test)
   }, [])
 
   React.useEffect(() => {
-    const filteredBosses = bossesData!.filter((el) => el.category === activeCategory)[0]
-    setBosses(filteredBosses)
+    dispatch(getBosses(activeCategory))
   }, [activeCategory])
 
-  const handleSelectClick = (category: string) => {
+  const handleSelectClick = React.useCallback((category: TBossesAvailableTypes) => {
     dispatch(bossesActions.setActiveCategory(category))
-  }
+  }, [])
 
   return (
     <>
@@ -96,8 +101,8 @@ const BossList = () => {
           ))}
         </div>
         <div className="bossList__bosses">
-          {bosses?.items?.map((el, idx) => (
-            <BossCard key={el._id} idx={idx} bossInfo={el} bossesList={bosses.items} />
+          {bossesList?.map((el, idx) => (
+            <BossCard key={el._id} idx={idx} bossInfo={el} bossesList={bossesList} />
           ))}
         </div>
       </div>

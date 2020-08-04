@@ -16,15 +16,33 @@ export type TBaseThunk<A extends Action = Action, R = Promise<void>> = ThunkActi
 >
 
 // Bosses -----------------
-export type TBossesCategory = {
-  category: string
-  title: string
-  items: Array<TBoss>
+export type TBossesAvailableTypes =
+  | 'easy'
+  | 'medium'
+  | 'strong'
+  | 'dangerBoys'
+  | 'guildBosses'
+  | 'priests'
+  | 'dragons'
+  | 'superBosses'
+
+export type TAddBoss = {
+  name: string
+  category: TBossesAvailableTypes
+  experience: string
+  additionalInfo: string
+  location: string
+  links?: {
+    name?: string
+    additionalInfo?: string
+    location?: string
+  }
 }
 
 export type TBoss = {
   _id: string
   name: string
+  category: TBossesAvailableTypes
   experience: string
   additionalInfo: string
   location: string
