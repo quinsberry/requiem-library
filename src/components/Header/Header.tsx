@@ -9,7 +9,6 @@ const Header = () => {
           <span className="logo">Requiem Library</span>
         </div>
         <ul className="header__nav-items">
-          <li className="header__nav-items--item hashtag"># Black lives matter</li>
           <li className="header__nav-items--item">
             <a href="https://discord.gg/4yqdafW" target="_blank">
               Discord

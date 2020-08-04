@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import cn from 'classnames'
 
 import { actions as sidebarActions } from '../../redux/reducers/sidebar'
-import { actions as bossesActions, getBosses } from '../../redux/reducers/bosses'
+import { actions as bossesActions, getBosses, addArrayOfBosses } from '../../redux/reducers/bosses'
 
 import { BossCard } from '../../components'
 
@@ -66,7 +66,6 @@ const BossList = () => {
 
   React.useEffect(() => {
     dispatch(sidebarActions.setActiveCategory('BossList'))
-    console.log(test)
   }, [])
 
   React.useEffect(() => {
