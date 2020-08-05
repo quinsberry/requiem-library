@@ -84,7 +84,9 @@ export const getBosses = (type: TBossesAvailableTypes): TThunk => {
     }
 
     dispatch(actions.setBosses(res))
-    dispatch(actions.setIsLoading(false))
+    setTimeout(async () => {
+      dispatch(actions.setIsLoading(false))
+    }, 300)
   }
 }
 

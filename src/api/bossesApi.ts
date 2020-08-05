@@ -34,7 +34,8 @@ export default {
           } as TBoss
           return (arrWithBosses = [...arrWithBosses, obj])
         })
-        return arrWithBosses
+        const result = arrWithBosses.sort((a, b) => +a.experience - +b.experience)
+        return result
       })
     return res
   },
