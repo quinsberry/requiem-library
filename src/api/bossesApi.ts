@@ -25,6 +25,7 @@ export default {
     const res = db
       .collection('bosses')
       .where('category', '==', type)
+      .orderBy('name')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
