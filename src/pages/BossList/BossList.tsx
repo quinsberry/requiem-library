@@ -72,15 +72,18 @@ const BossList = () => {
 
   React.useEffect(() => {
     dispatch(sidebarActions.setActiveCategory('BossList'))
+    if (!bossesList.length) {
+      dispatch(getBosses(activeCategory))
+    }
   }, [])
 
-  React.useEffect(() => {
-    dispatch(getBosses(activeCategory))
-  }, [activeCategory])
-
-  const handleSelectClick = React.useCallback((category: TBossesAvailableTypes) => {
-    dispatch(bossesActions.setActiveCategory(category))
-  }, [])
+  const handleSelectClick = React.useCallback(
+    (category: TBossesAvailableTypes) => {
+      dispatch(bossesActions.setActiveCategory(category))
+      dispatch(getBosses(category))
+    },
+    [activeCategory],
+  )
 
   return (
     <>
