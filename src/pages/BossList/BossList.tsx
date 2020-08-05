@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { actions as sidebarActions } from '../../redux/reducers/sidebar'
 import { actions as bossesActions, getBosses, addArrayOfBosses } from '../../redux/reducers/bosses'
 
-import { BossCard } from '../../components'
+import { BossCard, BossCardLoader } from '../../components'
 
 import './BossList.scss'
 
@@ -55,14 +55,20 @@ type Selector = {
 type TMapState = {
   activeCategory: TBossesAvailableTypes
   bossesList: Array<TBoss>
+  isLoading: boolean
+  initialized: boolean
 }
 
 const BossList = () => {
   const dispatch = useDispatch()
-  const { activeCategory, bossesList } = useSelector<TAppState, TMapState>((state) => ({
-    activeCategory: state.content.bosses.activeCategory,
-    bossesList: state.content.bosses.bossesList,
-  }))
+  const { activeCategory, bossesList, isLoading, initialized } = useSelector<TAppState, TMapState>(
+    (state) => ({
+      activeCategory: state.content.bosses.activeCategory,
+      bossesList: state.content.bosses.bossesList,
+      isLoading: state.content.bosses.isLoading,
+      initialized: state.content.bosses.initialized,
+    }),
+  )
 
   React.useEffect(() => {
     dispatch(sidebarActions.setActiveCategory('BossList'))
@@ -100,9 +106,12 @@ const BossList = () => {
           ))}
         </div>
         <div className="bossList__bosses">
-          {bossesList?.map((el, idx) => (
-            <BossCard key={el._id} idx={idx} bossInfo={el} bossesList={bossesList} />
-          ))}
+          {bossesList && isLoading
+            ? bossesList.map((item, idx) => <BossCardLoader key={idx} />)
+            : bossesList.map((el, idx) => (
+                <BossCard key={el._id} idx={idx} bossInfo={el} bossesList={bossesList} />
+              ))}
+          {!initialized && [...Array(12)].map((el, idx) => <BossCardLoader key={idx} />)}
         </div>
       </div>
     </>

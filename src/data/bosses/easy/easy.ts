@@ -164,4 +164,11 @@ export default [
         'https://elderscrolls.fandom.com/ru/wiki/%D0%9F%D0%B5%D1%89%D0%B5%D1%80%D0%B0_%D0%93%D0%BE%D0%B2%D0%BE%D1%80%D1%8F%D1%89%D0%B8%D0%B5_%D0%A5%D0%BE%D0%BB%D0%BC%D1%8B',
     },
   },
+  {
+    category: 'easy',
+    name: 'Гигантский краб',
+    experience: '26.250',
+    additionalInfo: 'Очень много крабов(могут быть просадки FPS)',
+    location: 'Остров крабов',
+  },
 ]

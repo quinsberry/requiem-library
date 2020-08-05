@@ -6,4 +6,4 @@ There is a client side of testing version of library for Requiem (users modifica
 </br>
 
 **Technologies:** React, Redux, typescript </br>
-**Libraries:** classnames, node-sass
+**Libraries:** classnames, node-sass, react-helmet, react-content-loader

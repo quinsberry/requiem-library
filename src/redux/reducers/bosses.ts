@@ -15,6 +15,7 @@ const initialState = {
   bossesList: [] as Array<TBoss>,
   errors: [],
   isLoading: false,
+  initialized: false,
 }
 
 export default (state = initialState, action: TActions): TInitialState => {
@@ -42,6 +43,11 @@ export default (state = initialState, action: TActions): TInitialState => {
         bossesList: sortedList,
       }
     }
+    case 'bosses/SET_INITIALIZED':
+      return {
+        ...state,
+        initialized: true,
+      }
     case 'bosses/SET_IS_LOADING':
       return {
         ...state,
@@ -60,14 +66,22 @@ export const actions = {
   setBosses: (payload: Array<TBoss>) => ({ type: 'bosses/SET_BOSSES', payload } as const),
   setErrors: (payload: any) => ({ type: 'bosses/SET_ERRORS', payload } as const),
   setIsLoading: (payload: boolean) => ({ type: 'bosses/SET_IS_LOADING', payload } as const),
+  setInitialized: () => ({ type: 'bosses/SET_INITIALIZED' } as const),
 }
 
 type TThunk = TBaseThunk<TActions>
 
 export const getBosses = (type: TBossesAvailableTypes): TThunk => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const {
+      content: { bosses },
+    } = getState()
     dispatch(actions.setIsLoading(true))
     const res = await bossesApi.getBosses(type)
+
+    if (!bosses.initialized) {
+      dispatch(actions.setInitialized())
+    }
 
     dispatch(actions.setBosses(res))
     dispatch(actions.setIsLoading(false))
