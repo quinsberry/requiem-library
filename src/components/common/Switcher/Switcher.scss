@@ -1,0 +1,61 @@
+@import '../../../styles/variables';
+
+.switcher {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+
+  .active {
+    color: #f9c50d !important;
+  }
+
+  .left-language {
+    color: $header-clr;
+    margin-right: 8px;
+  }
+  .right-language {
+    color: #f9c50d;
+    margin-left: 8px;
+  }
+
+  .check {
+    position: relative;
+    width: 50px;
+    cursor: pointer;
+
+    &:checked {
+      &:before {
+        // background: #00a1ff;
+        background: $switcher-color2;
+      }
+      &:after {
+        left: 25px;
+        border: 2px solid $switcher-color2;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      width: 50px;
+      height: 25px;
+      background: $switcher-color1;
+      border-radius: 25px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -5px;
+      width: 25px;
+      height: 25px;
+      background: #fff;
+      border-radius: 25px;
+      transition: 0.25s;
+      border: 2px solid $switcher-color1;
+      box-sizing: border-box;
+    }
+  }
+}

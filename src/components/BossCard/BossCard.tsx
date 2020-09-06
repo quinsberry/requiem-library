@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import questionCircleSvg from '../../assets/question-circle.svg'
 import './BossCard.scss'
@@ -12,6 +13,7 @@ type Props = {
 }
 
 const BossCard: React.FC<Props> = ({ idx, bossInfo, bossesList }) => {
+  const { t } = useTranslation()
   const { name, experience, additionalInfo, location, links } = bossInfo
 
   return (
@@ -28,7 +30,7 @@ const BossCard: React.FC<Props> = ({ idx, bossInfo, bossesList }) => {
           <h4 className="bossCard-content__name">{name}</h4>
         )}
         <span className="bossCard-content__experience">
-          <b>Опыт:</b> {experience}
+          <b>{t('bossList.card.exp')}:</b> {experience}
         </span>
         {links?.additionalInfo ? (
           <p className="bossCard-content__additional">

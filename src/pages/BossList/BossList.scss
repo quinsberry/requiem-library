@@ -8,7 +8,16 @@
   &__selector {
     display: flex;
     margin-bottom: 15px;
+
+    &.en {
+      display: grid;
+      // grid-template-columns: repeat(8, 1fr);
+      grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1fr 1fr 2fr;
+      max-width: 96.4%;
+    }
+
     &--select {
+      text-align: center;
       padding: 7px 8px;
       margin-right: 9px;
       border-radius: 7px;

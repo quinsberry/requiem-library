@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-import { sidebar, bosses } from './reducers'
+import { sidebar, bosses, settings } from './reducers'
 
 export type TRootReducer = typeof rootReducer
 
@@ -12,6 +12,7 @@ const content = combineReducers({
 const rootReducer = combineReducers({
   sidebar,
   content,
+  settings,
 })
 
 // @ts-ignore

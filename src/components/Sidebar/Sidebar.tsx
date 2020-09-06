@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import cn from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { actions as sidebarActions } from '../../redux/reducers/sidebar'
 
@@ -10,24 +11,6 @@ import { Block, Input } from '../common'
 import './Sidebar.scss'
 import { TAppState } from '../../types/types'
 
-const categoriesList = [
-  { title: 'Босс-лист', name: 'BossList', path: '/boss-list' },
-  { title: 'Рассы/Камни/Боги', name: 'Races/Stones/Gods', path: '/races-stones-gods' },
-  { title: 'Перки', name: 'Perks', path: '/perks' },
-  { title: 'Экипировка', name: 'Equipment', path: '/equipment' },
-  { title: 'Тиры', name: 'Tiers', path: '/tiers' },
-  {
-    title: 'Таланты/Активные эффекты/Крики',
-    name: 'Talents/Active-effects/Screams',
-    path: '/talents-active_effects-screams',
-  },
-  { title: 'Вампиры и Оборотни', name: 'Vampires/Werewolves', path: '/vampires-werewolves' },
-  { title: 'Спойлеры', name: 'Spoilers', path: '/spoilers' },
-  { title: 'Социалочка', name: 'Social', path: '/social' },
-  { title: 'Правила игры', name: 'GameRules', path: '/game-rules' },
-  { title: 'Алхимия', name: 'Alchemy', path: '/alchemy' },
-]
-
 type TMapState = {
   active: string
 }
@@ -35,9 +18,39 @@ type TMapState = {
 const Sidebar = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { t } = useTranslation()
   const { active } = useSelector<TAppState, TMapState>((state) => ({
     active: state.sidebar.active,
   }))
+
+  const categoriesList = useMemo(
+    () => [
+      { title: t('sidebar.categories.bossList'), name: 'BossList', path: '/boss-list' },
+      {
+        title: t('sidebar.categories.racesStonesGods'),
+        name: 'Races/Stones/Gods',
+        path: '/races-stones-gods',
+      },
+      { title: t('sidebar.categories.perks'), name: 'Perks', path: '/perks' },
+      { title: t('sidebar.categories.equipment'), name: 'Equipment', path: '/equipment' },
+      { title: t('sidebar.categories.tiers'), name: 'Tiers', path: '/tiers' },
+      {
+        title: t('sidebar.categories.talentsActiveEffectsScreams'),
+        name: 'Talents/Active-effects/Screams',
+        path: '/talents-active_effects-screams',
+      },
+      {
+        title: t('sidebar.categories.vampiresWerewolves'),
+        name: 'Vampires/Werewolves',
+        path: '/vampires-werewolves',
+      },
+      { title: t('sidebar.categories.spoilers'), name: 'Spoilers', path: '/spoilers' },
+      { title: t('sidebar.categories.social'), name: 'Social', path: '/social' },
+      { title: t('sidebar.categories.gamesRules'), name: 'GameRules', path: '/games-rules' },
+      { title: t('sidebar.categories.alchemy'), name: 'Alchemy', path: '/alchemy' },
+    ],
+    [t],
+  )
 
   const { setActiveCategory } = sidebarActions
 
@@ -49,7 +62,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="search">
-        <Input placeholder="Поиск (в разработке)" />
+        <Input placeholder={t('sidebar.search.placeholder')} />
       </div>
       <div className="categories">
         <Block sidebar>

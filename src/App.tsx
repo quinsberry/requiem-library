@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import {
   BossList,
@@ -17,7 +19,22 @@ import {
 } from './pages'
 import { Header, Sidebar } from './components'
 
+import { TAppState } from './types/types'
+
+type TMapState = {
+  language: string
+}
+
 const App = () => {
+  const { i18n } = useTranslation()
+  const { language } = useSelector<TAppState, TMapState>((state) => ({
+    language: state.settings.language,
+  }))
+
+  useEffect(() => {
+    i18n.changeLanguage(language)
+  }, [language])
+
   return (
     <div className="wrapper">
       <Helmet defaultTitle="Requiem library" titleTemplate="%s | Requiem library">
@@ -46,7 +63,7 @@ const App = () => {
               <Route path="/vampires-werewolves" component={VampiresWerwolves} exact />
               <Route path="/spoilers" component={Spoilers} exact />
               <Route path="/social" component={Social} />
-              <Route path="/game-rules" component={GameRules} exact />
+              <Route path="/games-rules" component={GameRules} exact />
               <Route path="/alchemy" component={Alchemy} exact />
               <Redirect to="/boss-list" />
             </Switch>

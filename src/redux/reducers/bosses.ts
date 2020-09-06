@@ -11,7 +11,7 @@ import { bossesApi } from '../../api'
 type TInitialState = typeof initialState
 
 const initialState = {
-  activeCategory: 'easy' as TBossesAvailableTypes,
+  activeCategory: 'ease' as TBossesAvailableTypes,
   bossesList: [] as Array<TBoss>,
   errors: [],
   isLoading: false,
