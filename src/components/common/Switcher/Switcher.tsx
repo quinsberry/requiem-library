@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 
 import './Switcher.scss'
 
@@ -11,9 +12,9 @@ type Props = {
 
 const Switcher: React.FC<Props> = ({ first, second, value, onChange }) => (
   <div className="switcher">
-    <span className="left-language">{first}</span>
+    <span className={cn('left-language', { active: !value })}>{first}</span>
     <input type="checkbox" className="check" checked={value} onChange={onChange} />
-    <span className="right-language">{second}</span>
+    <span className={cn('right-language', { active: value })}>{second}</span>
   </div>
 )
 

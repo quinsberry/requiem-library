@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import { actions as sidebarActions } from '../../redux/reducers/sidebar'
+import { actions as sidebarActions } from '../../store/reducers/sidebar'
 
 import { Block, Input } from '../common'
 

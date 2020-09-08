@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { actions as SettingsActions } from '../../redux/reducers/settings'
+import { actions as SettingsActions } from '../../store/reducers/settings'
 
 import { Switcher } from '../common'
 
@@ -46,8 +46,8 @@ const Header = () => {
             </li>
           </ul>
           <Switcher
-            first="Русский"
-            second="English"
+            first="RU"
+            second="EN"
             value={languageUsed}
             onChange={() => setLanguageUsed((prev) => !prev)}
           />

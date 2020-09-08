@@ -8,7 +8,7 @@ import { resources } from './localization'
 
 import App from './App'
 
-import store from './redux/store'
+import store from './store'
 
 import './index.scss'
 

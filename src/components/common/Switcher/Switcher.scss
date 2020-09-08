@@ -5,41 +5,46 @@
   align-items: center;
   font-size: 12px;
 
-  .active {
-    color: #f9c50d !important;
-  }
-
   .left-language {
-    color: $header-clr;
     margin-right: 8px;
   }
   .right-language {
-    color: #f9c50d;
     margin-left: 8px;
+  }
+
+  .left-language,
+  .right-language {
+    color: $header-clr;
+
+    &.active {
+      color: $active-clr;
+    }
   }
 
   .check {
     position: relative;
-    width: 50px;
+    width: 30px;
     cursor: pointer;
 
     &:checked {
       &:before {
-        // background: #00a1ff;
-        background: $switcher-color2;
+        // background: $switcher-color2;
+        background: $switcher-color1;
       }
+
       &:after {
-        left: 25px;
-        border: 2px solid $switcher-color2;
+        left: 15px;
+        border: 1px solid $switcher-color1;
+        // border: 2px solid $switcher-color2;
       }
     }
 
     &:before {
       content: '';
       position: absolute;
-      top: -5px;
-      width: 50px;
-      height: 25px;
+      top: -1px;
+      width: 30px;
+      height: 15px;
       background: $switcher-color1;
       border-radius: 25px;
     }
@@ -48,13 +53,13 @@
       content: '';
       position: absolute;
       left: 0;
-      top: -5px;
-      width: 25px;
-      height: 25px;
+      top: -1px;
+      width: 15px;
+      height: 15px;
       background: #fff;
       border-radius: 25px;
       transition: 0.25s;
-      border: 2px solid $switcher-color1;
+      border: 1px solid $switcher-color1;
       box-sizing: border-box;
     }
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch } from 'react-redux'
 
-import { actions as sidebarActions } from '../../redux/reducers/sidebar'
+import { actions as sidebarActions } from '../../store/reducers/sidebar'
 
 import './Equipment.scss'
 

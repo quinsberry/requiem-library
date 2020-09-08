@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import cn from 'classnames'
 
-import { actions as sidebarActions } from '../../redux/reducers/sidebar'
-import { actions as bossesActions, getBosses, addArrayOfBosses } from '../../redux/reducers/bosses'
+import { actions as sidebarActions } from '../../store/reducers/sidebar'
+import { actions as bossesActions, getBosses, addArrayOfBosses } from '../../store/reducers/bosses'
 
 import { BossCard, BossCardLoader } from '../../components'
 

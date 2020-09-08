@@ -1,4 +1,4 @@
-import { TRootReducer } from '../redux/store'
+import { TRootReducer } from '../store'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 
